@@ -9,6 +9,7 @@ import Sponsors from './components/Sponsors';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import Preloader from './components/Preloader';
+import { LanguageProvider } from './contexts/LanguageContext';
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -22,23 +23,29 @@ function App() {
   }, []);
 
   if (loading) {
-    return <Preloader />;
+    return (
+      <LanguageProvider>
+        <Preloader />
+      </LanguageProvider>
+    );
   }
 
   return (
-    <div className="min-h-screen bg-black text-white">
-      <Header />
-      <main>
-        <Hero />
-        <About />
-        <Projects />
-        <Team />
-        <Recruitment />
-        <Sponsors />
-        <Contact />
-      </main>
-      <Footer />
-    </div>
+    <LanguageProvider>
+      <div className="min-h-screen bg-black text-white">
+        <Header />
+        <main>
+          <Hero />
+          <About />
+          <Projects />
+          <Team />
+          <Recruitment />
+          <Sponsors />
+          <Contact />
+        </main>
+        <Footer />
+      </div>
+    </LanguageProvider>
   );
 }
 

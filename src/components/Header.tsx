@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X, Instagram, Facebook, Youtube, Linkedin } from 'lucide-react';
+import { useLanguage } from '../contexts/LanguageContext';
+import LanguageSwitcher from './LanguageSwitcher';
 
 const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const { t } = useLanguage();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -47,87 +50,93 @@ const Header: React.FC = () => {
           {/* Enhanced Desktop Navigation */}
           <nav className="navmenu desktop-nav hidden lg:flex items-center space-x-8">
             <button onClick={() => scrollToSection('hero')} className="nav-link group relative">
-              <span>Home</span>
+              <span>{t('nav.home')}</span>
               <div className="absolute -bottom-1 left-0 w-0 h-0.5 bg-red-500 group-hover:w-full transition-all duration-300" />
             </button>
             <button onClick={() => scrollToSection('about')} className="nav-link group relative">
-              <span>About</span>
+              <span>{t('nav.about')}</span>
               <div className="absolute -bottom-1 left-0 w-0 h-0.5 bg-red-500 group-hover:w-full transition-all duration-300" />
             </button>
             <button onClick={() => scrollToSection('projects')} className="nav-link group relative">
-              <span>Projects</span>
+              <span>{t('nav.projects')}</span>
               <div className="absolute -bottom-1 left-0 w-0 h-0.5 bg-red-500 group-hover:w-full transition-all duration-300" />
             </button>
             <button onClick={() => scrollToSection('team')} className="nav-link group relative">
-              <span>Team</span>
+              <span>{t('nav.team')}</span>
               <div className="absolute -bottom-1 left-0 w-0 h-0.5 bg-red-500 group-hover:w-full transition-all duration-300" />
             </button>
             <button onClick={() => scrollToSection('recruitment')} className="nav-link group relative">
-              <span>Recruitment</span>
+              <span>{t('nav.recruitment')}</span>
               <div className="absolute -bottom-1 left-0 w-0 h-0.5 bg-red-500 group-hover:w-full transition-all duration-300" />
             </button>
             <button onClick={() => scrollToSection('sponsors')} className="nav-link group relative">
-              <span>Sponsors</span>
+              <span>{t('nav.sponsors')}</span>
               <div className="absolute -bottom-1 left-0 w-0 h-0.5 bg-red-500 group-hover:w-full transition-all duration-300" />
             </button>
             <button onClick={() => scrollToSection('contact')} className="nav-link group relative">
-              <span>Contact</span>
+              <span>{t('nav.contact')}</span>
               <div className="absolute -bottom-1 left-0 w-0 h-0.5 bg-red-500 group-hover:w-full transition-all duration-300" />
             </button>
           </nav>
 
-          {/* Enhanced Social Links - Desktop */}
-          <div className="social hidden lg:flex items-center space-x-4">
-            <a href="https://www.instagram.com/fsteamutm" target="_blank" rel="noopener noreferrer" className="social-icon group">
-              <Instagram size={20} className="group-hover:scale-110 transition-transform duration-300" />
-            </a>
-            <a href="https://www.facebook.com/fsteamutm" target="_blank" rel="noopener noreferrer" className="social-icon group">
-              <Facebook size={20} className="group-hover:scale-110 transition-transform duration-300" />
-            </a>
-            <a href="#" className="social-icon group">
-              <Youtube size={20} className="group-hover:scale-110 transition-transform duration-300" />
-            </a>
-            <a href="https://www.linkedin.com/in/fsteamutm" target="_blank" rel="noopener noreferrer" className="social-icon group">
-              <Linkedin size={20} className="group-hover:scale-110 transition-transform duration-300" />
-            </a>
-          </div>
+          {/* Right side - Language Switcher, Social Links, Mobile Menu */}
+          <div className="flex items-center space-x-4">
+            {/* Language Switcher */}
+            <LanguageSwitcher />
 
-          {/* Enhanced Mobile Menu Button */}
-          <button
-            onClick={toggleMenu}
-            className="menu-icon lg:hidden text-white p-2 relative z-50 group"
-          >
-            <div className="relative w-6 h-6">
-              <span className={`absolute top-0 left-0 w-full h-0.5 bg-white transition-all duration-300 ${isMenuOpen ? 'rotate-45 top-3' : ''}`} />
-              <span className={`absolute top-2.5 left-0 w-full h-0.5 bg-white transition-all duration-300 ${isMenuOpen ? 'opacity-0' : ''}`} />
-              <span className={`absolute top-5 left-0 w-full h-0.5 bg-white transition-all duration-300 ${isMenuOpen ? '-rotate-45 top-3' : ''}`} />
+            {/* Enhanced Social Links - Desktop */}
+            <div className="social hidden lg:flex items-center space-x-4">
+              <a href="https://www.instagram.com/fsteamutm" target="_blank" rel="noopener noreferrer" className="social-icon group">
+                <Instagram size={20} className="group-hover:scale-110 transition-transform duration-300" />
+              </a>
+              <a href="https://www.facebook.com/fsteamutm" target="_blank" rel="noopener noreferrer" className="social-icon group">
+                <Facebook size={20} className="group-hover:scale-110 transition-transform duration-300" />
+              </a>
+              <a href="#" className="social-icon group">
+                <Youtube size={20} className="group-hover:scale-110 transition-transform duration-300" />
+              </a>
+              <a href="https://www.linkedin.com/in/fsteamutm" target="_blank" rel="noopener noreferrer" className="social-icon group">
+                <Linkedin size={20} className="group-hover:scale-110 transition-transform duration-300" />
+              </a>
             </div>
-          </button>
+
+            {/* Enhanced Mobile Menu Button */}
+            <button
+              onClick={toggleMenu}
+              className="menu-icon lg:hidden text-white p-2 relative z-50 group"
+            >
+              <div className="relative w-6 h-6">
+                <span className={`absolute top-0 left-0 w-full h-0.5 bg-white transition-all duration-300 ${isMenuOpen ? 'rotate-45 top-3' : ''}`} />
+                <span className={`absolute top-2.5 left-0 w-full h-0.5 bg-white transition-all duration-300 ${isMenuOpen ? 'opacity-0' : ''}`} />
+                <span className={`absolute top-5 left-0 w-full h-0.5 bg-white transition-all duration-300 ${isMenuOpen ? '-rotate-45 top-3' : ''}`} />
+              </div>
+            </button>
+          </div>
         </div>
 
         {/* Enhanced Mobile Menu */}
         <nav className={`mobile-nav lg:hidden transition-all duration-500 ${isMenuOpen ? '_active' : ''}`}>
           <div className="flex flex-col py-6 px-4 space-y-4">
             <button onClick={() => scrollToSection('hero')} className="mobile-nav-link group">
-              <span className="group-hover:translate-x-2 transition-transform duration-300">Home</span>
+              <span className="group-hover:translate-x-2 transition-transform duration-300">{t('nav.home')}</span>
             </button>
             <button onClick={() => scrollToSection('about')} className="mobile-nav-link group">
-              <span className="group-hover:translate-x-2 transition-transform duration-300">About</span>
+              <span className="group-hover:translate-x-2 transition-transform duration-300">{t('nav.about')}</span>
             </button>
             <button onClick={() => scrollToSection('projects')} className="mobile-nav-link group">
-              <span className="group-hover:translate-x-2 transition-transform duration-300">Projects</span>
+              <span className="group-hover:translate-x-2 transition-transform duration-300">{t('nav.projects')}</span>
             </button>
             <button onClick={() => scrollToSection('team')} className="mobile-nav-link group">
-              <span className="group-hover:translate-x-2 transition-transform duration-300">Team</span>
+              <span className="group-hover:translate-x-2 transition-transform duration-300">{t('nav.team')}</span>
             </button>
             <button onClick={() => scrollToSection('recruitment')} className="mobile-nav-link group">
-              <span className="group-hover:translate-x-2 transition-transform duration-300">Recruitment</span>
+              <span className="group-hover:translate-x-2 transition-transform duration-300">{t('nav.recruitment')}</span>
             </button>
             <button onClick={() => scrollToSection('sponsors')} className="mobile-nav-link group">
-              <span className="group-hover:translate-x-2 transition-transform duration-300">Sponsors</span>
+              <span className="group-hover:translate-x-2 transition-transform duration-300">{t('nav.sponsors')}</span>
             </button>
             <button onClick={() => scrollToSection('contact')} className="mobile-nav-link group">
-              <span className="group-hover:translate-x-2 transition-transform duration-300">Contact</span>
+              <span className="group-hover:translate-x-2 transition-transform duration-300">{t('nav.contact')}</span>
             </button>
             
             {/* Enhanced Mobile Social Links */}

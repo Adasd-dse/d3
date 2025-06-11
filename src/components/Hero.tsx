@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { ChevronDown } from 'lucide-react';
+import { useLanguage } from '../contexts/LanguageContext';
 
 const Hero: React.FC = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const { t } = useLanguage();
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
@@ -69,20 +71,20 @@ const Hero: React.FC = () => {
       <div className="relative z-10 text-center px-4 max-w-6xl mx-auto">
         <div className="mb-6 animate-fade-in-up">
           <span className="inline-block px-6 py-3 bg-red-600/20 border border-red-500/30 rounded-full text-red-400 text-sm font-medium tracking-wider backdrop-blur-sm hover:bg-red-600/30 transition-all duration-300 cursor-default">
-            FORMULA STUDENT TEAM
+            {t('hero.badge')}
           </span>
         </div>
         
         <h1 className="hero-title text-5xl md:text-7xl lg:text-8xl font-black mb-6 leading-tight text-shadow animate-fade-in-up delay-200">
           <span className="bg-gradient-to-r from-white via-gray-200 to-red-400 bg-clip-text text-transparent hover:from-red-400 hover:to-white transition-all duration-1000 cursor-default">
-            RACING
+            {t('hero.title.racing')}
           </span>
           <br />
-          <span className="text-red-500 hover:text-red-400 transition-colors duration-500 cursor-default">EXCELLENCE</span>
+          <span className="text-red-500 hover:text-red-400 transition-colors duration-500 cursor-default">{t('hero.title.excellence')}</span>
         </h1>
         
         <p className="hero-subtitle text-xl md:text-2xl text-gray-300 mb-8 max-w-3xl mx-auto leading-relaxed animate-fade-in-up delay-400">
-          Pushing the boundaries of engineering and innovation at the Technical University of Moldova
+          {t('hero.subtitle')}
         </p>
         
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center animate-fade-in-up delay-600">
@@ -90,14 +92,14 @@ const Hero: React.FC = () => {
             onClick={scrollToAbout}
             className="group px-8 py-4 bg-red-600 hover:bg-red-700 text-white font-bold rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-2xl hover-lift relative overflow-hidden"
           >
-            <span className="relative z-10">Discover Our Story</span>
+            <span className="relative z-10">{t('hero.cta.discover')}</span>
             <div className="absolute inset-0 bg-gradient-to-r from-red-700 to-red-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
           </button>
           <button 
             onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
             className="group px-8 py-4 border-2 border-white/30 hover:border-red-500 text-white hover:text-red-400 font-bold rounded-lg transition-all duration-300 relative overflow-hidden backdrop-blur-sm"
           >
-            <span className="relative z-10">View Projects</span>
+            <span className="relative z-10">{t('hero.cta.projects')}</span>
             <div className="absolute inset-0 bg-red-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
           </button>
         </div>
