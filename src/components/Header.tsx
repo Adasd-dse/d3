@@ -29,81 +29,120 @@ const Header: React.FC = () => {
 
   return (
     <header className={`header fixed w-full z-40 transition-all duration-500 ${
-      isScrolled ? 'bg-black/90 backdrop-blur-sm py-3' : 'bg-black/60 py-4'
+      isScrolled ? 'bg-black/90 backdrop-blur-md py-3 shadow-2xl border-b border-red-500/20' : 'bg-black/60 py-4'
     }`}>
       <div className="wrapper max-w-7xl mx-auto px-4">
         <div className="row flex items-center justify-between">
-          {/* Logo */}
-          <div className="logo flex items-center space-x-2">
-            <div className="w-12 h-12 bg-red-600 rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-xl">FS</span>
+          {/* Enhanced Logo */}
+          <div className="logo flex items-center space-x-2 group cursor-pointer">
+            <div className="w-12 h-12 bg-gradient-to-br from-red-600 to-red-700 rounded-lg flex items-center justify-center transform group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-lg group-hover:shadow-red-500/50">
+              <span className="text-white font-bold text-xl group-hover:text-gray-100 transition-colors">FS</span>
             </div>
             <div className="hidden md:block">
-              <div className="text-white font-bold text-lg">Formula Student</div>
-              <div className="text-red-500 text-sm">UTM</div>
+              <div className="text-white font-bold text-lg group-hover:text-red-400 transition-colors duration-300">Formula Student</div>
+              <div className="text-red-500 text-sm group-hover:text-red-400 transition-colors duration-300">UTM</div>
             </div>
           </div>
 
-          {/* Desktop Navigation */}
+          {/* Enhanced Desktop Navigation */}
           <nav className="navmenu desktop-nav hidden lg:flex items-center space-x-8">
-            <button onClick={() => scrollToSection('hero')} className="nav-link">Home</button>
-            <button onClick={() => scrollToSection('about')} className="nav-link">About</button>
-            <button onClick={() => scrollToSection('projects')} className="nav-link">Projects</button>
-            <button onClick={() => scrollToSection('team')} className="nav-link">Team</button>
-            <button onClick={() => scrollToSection('recruitment')} className="nav-link">Recruitment</button>
-            <button onClick={() => scrollToSection('sponsors')} className="nav-link">Sponsors</button>
-            <button onClick={() => scrollToSection('contact')} className="nav-link">Contact</button>
+            <button onClick={() => scrollToSection('hero')} className="nav-link group relative">
+              <span>Home</span>
+              <div className="absolute -bottom-1 left-0 w-0 h-0.5 bg-red-500 group-hover:w-full transition-all duration-300" />
+            </button>
+            <button onClick={() => scrollToSection('about')} className="nav-link group relative">
+              <span>About</span>
+              <div className="absolute -bottom-1 left-0 w-0 h-0.5 bg-red-500 group-hover:w-full transition-all duration-300" />
+            </button>
+            <button onClick={() => scrollToSection('projects')} className="nav-link group relative">
+              <span>Projects</span>
+              <div className="absolute -bottom-1 left-0 w-0 h-0.5 bg-red-500 group-hover:w-full transition-all duration-300" />
+            </button>
+            <button onClick={() => scrollToSection('team')} className="nav-link group relative">
+              <span>Team</span>
+              <div className="absolute -bottom-1 left-0 w-0 h-0.5 bg-red-500 group-hover:w-full transition-all duration-300" />
+            </button>
+            <button onClick={() => scrollToSection('recruitment')} className="nav-link group relative">
+              <span>Recruitment</span>
+              <div className="absolute -bottom-1 left-0 w-0 h-0.5 bg-red-500 group-hover:w-full transition-all duration-300" />
+            </button>
+            <button onClick={() => scrollToSection('sponsors')} className="nav-link group relative">
+              <span>Sponsors</span>
+              <div className="absolute -bottom-1 left-0 w-0 h-0.5 bg-red-500 group-hover:w-full transition-all duration-300" />
+            </button>
+            <button onClick={() => scrollToSection('contact')} className="nav-link group relative">
+              <span>Contact</span>
+              <div className="absolute -bottom-1 left-0 w-0 h-0.5 bg-red-500 group-hover:w-full transition-all duration-300" />
+            </button>
           </nav>
 
-          {/* Social Links - Desktop */}
+          {/* Enhanced Social Links - Desktop */}
           <div className="social hidden lg:flex items-center space-x-4">
-            <a href="https://www.instagram.com/fsteamutm" target="_blank" rel="noopener noreferrer" className="social-icon">
-              <Instagram size={20} />
+            <a href="https://www.instagram.com/fsteamutm" target="_blank" rel="noopener noreferrer" className="social-icon group">
+              <Instagram size={20} className="group-hover:scale-110 transition-transform duration-300" />
             </a>
-            <a href="https://www.facebook.com/fsteamutm" target="_blank" rel="noopener noreferrer" className="social-icon">
-              <Facebook size={20} />
+            <a href="https://www.facebook.com/fsteamutm" target="_blank" rel="noopener noreferrer" className="social-icon group">
+              <Facebook size={20} className="group-hover:scale-110 transition-transform duration-300" />
             </a>
-            <a href="#" className="social-icon">
-              <Youtube size={20} />
+            <a href="#" className="social-icon group">
+              <Youtube size={20} className="group-hover:scale-110 transition-transform duration-300" />
             </a>
-            <a href="https://www.linkedin.com/in/fsteamutm" target="_blank" rel="noopener noreferrer" className="social-icon">
-              <Linkedin size={20} />
+            <a href="https://www.linkedin.com/in/fsteamutm" target="_blank" rel="noopener noreferrer" className="social-icon group">
+              <Linkedin size={20} className="group-hover:scale-110 transition-transform duration-300" />
             </a>
           </div>
 
-          {/* Mobile Menu Button */}
+          {/* Enhanced Mobile Menu Button */}
           <button
             onClick={toggleMenu}
-            className="menu-icon lg:hidden text-white p-2 relative z-50"
+            className="menu-icon lg:hidden text-white p-2 relative z-50 group"
           >
-            {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            <div className="relative w-6 h-6">
+              <span className={`absolute top-0 left-0 w-full h-0.5 bg-white transition-all duration-300 ${isMenuOpen ? 'rotate-45 top-3' : ''}`} />
+              <span className={`absolute top-2.5 left-0 w-full h-0.5 bg-white transition-all duration-300 ${isMenuOpen ? 'opacity-0' : ''}`} />
+              <span className={`absolute top-5 left-0 w-full h-0.5 bg-white transition-all duration-300 ${isMenuOpen ? '-rotate-45 top-3' : ''}`} />
+            </div>
           </button>
         </div>
 
-        {/* Mobile Menu */}
-        <nav className={`mobile-nav lg:hidden ${isMenuOpen ? '_active' : ''}`}>
+        {/* Enhanced Mobile Menu */}
+        <nav className={`mobile-nav lg:hidden transition-all duration-500 ${isMenuOpen ? '_active' : ''}`}>
           <div className="flex flex-col py-6 px-4 space-y-4">
-            <button onClick={() => scrollToSection('hero')} className="mobile-nav-link">Home</button>
-            <button onClick={() => scrollToSection('about')} className="mobile-nav-link">About</button>
-            <button onClick={() => scrollToSection('projects')} className="mobile-nav-link">Projects</button>
-            <button onClick={() => scrollToSection('team')} className="mobile-nav-link">Team</button>
-            <button onClick={() => scrollToSection('recruitment')} className="mobile-nav-link">Recruitment</button>
-            <button onClick={() => scrollToSection('sponsors')} className="mobile-nav-link">Sponsors</button>
-            <button onClick={() => scrollToSection('contact')} className="mobile-nav-link">Contact</button>
+            <button onClick={() => scrollToSection('hero')} className="mobile-nav-link group">
+              <span className="group-hover:translate-x-2 transition-transform duration-300">Home</span>
+            </button>
+            <button onClick={() => scrollToSection('about')} className="mobile-nav-link group">
+              <span className="group-hover:translate-x-2 transition-transform duration-300">About</span>
+            </button>
+            <button onClick={() => scrollToSection('projects')} className="mobile-nav-link group">
+              <span className="group-hover:translate-x-2 transition-transform duration-300">Projects</span>
+            </button>
+            <button onClick={() => scrollToSection('team')} className="mobile-nav-link group">
+              <span className="group-hover:translate-x-2 transition-transform duration-300">Team</span>
+            </button>
+            <button onClick={() => scrollToSection('recruitment')} className="mobile-nav-link group">
+              <span className="group-hover:translate-x-2 transition-transform duration-300">Recruitment</span>
+            </button>
+            <button onClick={() => scrollToSection('sponsors')} className="mobile-nav-link group">
+              <span className="group-hover:translate-x-2 transition-transform duration-300">Sponsors</span>
+            </button>
+            <button onClick={() => scrollToSection('contact')} className="mobile-nav-link group">
+              <span className="group-hover:translate-x-2 transition-transform duration-300">Contact</span>
+            </button>
             
-            {/* Mobile Social Links */}
+            {/* Enhanced Mobile Social Links */}
             <div className="flex justify-center space-x-6 pt-8">
-              <a href="https://www.instagram.com/fsteamutm" target="_blank" rel="noopener noreferrer" className="social-icon">
-                <Instagram size={24} />
+              <a href="https://www.instagram.com/fsteamutm" target="_blank" rel="noopener noreferrer" className="social-icon group">
+                <Instagram size={24} className="group-hover:scale-125 group-hover:rotate-12 transition-all duration-300" />
               </a>
-              <a href="https://www.facebook.com/fsteamutm" target="_blank" rel="noopener noreferrer" className="social-icon">
-                <Facebook size={24} />
+              <a href="https://www.facebook.com/fsteamutm" target="_blank" rel="noopener noreferrer" className="social-icon group">
+                <Facebook size={24} className="group-hover:scale-125 group-hover:rotate-12 transition-all duration-300" />
               </a>
-              <a href="#" className="social-icon">
-                <Youtube size={24} />
+              <a href="#" className="social-icon group">
+                <Youtube size={24} className="group-hover:scale-125 group-hover:rotate-12 transition-all duration-300" />
               </a>
-              <a href="https://www.linkedin.com/in/fsteamutm" target="_blank" rel="noopener noreferrer" className="social-icon">
-                <Linkedin size={24} />
+              <a href="https://www.linkedin.com/in/fsteamutm" target="_blank" rel="noopener noreferrer" className="social-icon group">
+                <Linkedin size={24} className="group-hover:scale-125 group-hover:rotate-12 transition-all duration-300" />
               </a>
             </div>
           </div>
